@@ -1,0 +1,4 @@
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/stm32g4xx_mc_it.c:64:6:ADC1_2_IRQHandler	8	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/stm32g4xx_mc_it.c:102:6:TIM2_IRQHandler	16	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/stm32g4xx_mc_it.c:138:6:TIM1_UP_TIM16_IRQHandler	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/stm32g4xx_mc_it.c:152:6:TIM1_BRK_TIM15_IRQHandler	8	static

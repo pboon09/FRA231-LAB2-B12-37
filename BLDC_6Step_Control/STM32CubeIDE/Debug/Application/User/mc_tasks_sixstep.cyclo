@@ -1,0 +1,8 @@
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:411:13:SIX_STEP_Clear	1
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:79:13:SIX_STEP_Init	1
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:128:6:TSK_MF_StopProcessing	1
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:434:13:SixStep_InitAdditionalMethods	1
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:450:13:SixStep_CalcSpeedRef	2
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:143:13:TSK_MediumFrequencyTaskM1	26
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:485:16:SIX_STEP_HighFrequencyTask	9
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/mc_tasks_sixstep.c:548:17:SixStep_StepCommution	6

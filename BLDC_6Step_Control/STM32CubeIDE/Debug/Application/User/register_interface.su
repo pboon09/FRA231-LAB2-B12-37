@@ -1,0 +1,7 @@
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/register_interface.c:32:9:RI_SetRegisterGlobal	4	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/register_interface.c:166:9:RI_SetRegisterMotor1	80	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/register_interface.c:458:9:RI_GetRegisterGlobal	8	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/register_interface.c:603:11:RI_GetRegisterMotor1	88	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/register_interface.c:994:9:RI_MovString	4	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/register_interface.c:1020:9:RI_GetIDSize	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/Src/register_interface.c:1055:16:RI_GetPtrReg	0	static

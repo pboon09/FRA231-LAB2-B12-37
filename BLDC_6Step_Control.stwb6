@@ -1,0 +1,2111 @@
+{
+  "description": "",
+  "checkList": {},
+  "version": 10,
+  "workBenchVersion": "6.3.2",
+  "workBenchVersionFileCreation": "6.3.1",
+  "algorithm": "sixStep",
+  "hardwares": {
+    "type": "CUSTOM",
+    "control": {
+      "mcu": {
+        "id": "STM32G474RETx"
+      },
+      "clockSource": "24_crystal",
+      "clockFrequency": 170,
+      "connectors": [
+        {
+          "name": "Morpho CN7/CN10",
+          "type": "morpho",
+          "terminals": {
+            "ML1": [
+              {
+                "name": "PC10",
+                "help": "CN7.1",
+                "cost": 0
+              }
+            ],
+            "ML2": [
+              {
+                "name": "PC11",
+                "help": "CN7.2",
+                "cost": 0
+              }
+            ],
+            "ML3": [
+              {
+                "name": "PC12",
+                "help": "CN7.3",
+                "cost": 0
+              }
+            ],
+            "ML4": [
+              {
+                "name": "PD2",
+                "help": "CN7.4",
+                "cost": 0
+              }
+            ],
+            "ML5": [
+              {
+                "name": "VDD",
+                "help": "CN7.5",
+                "cost": 0
+              }
+            ],
+            "ML6": [
+              {
+                "name": "E5V",
+                "help": "CN7.6",
+                "cost": 0
+              }
+            ],
+            "ML7": [
+              {
+                "name": "BOOT0",
+                "help": "CN7.7 BOOT0 is not connected by default. The BOOT0 function is done by SW:\n Option byte nSWBOOT0 must be set to 0 (in that case, BOOT0 is taken from the Option byte nBOOT0)\n Option byte nBOOT0 must be set to 1 (in that case BOOT0 is active low. \n If nSWBOOT0 is set to 0, the BOOT0 is taken from pin PB8 / BOOT0.",
+                "cost": 0
+              }
+            ],
+            "ML8": [
+              {
+                "name": "GND",
+                "help": "CN7.8",
+                "cost": 0
+              }
+            ],
+            "ML9": [
+              {
+                "name": "NC",
+                "help": "CN7.9",
+                "cost": 0
+              }
+            ],
+            "ML10": [
+              {
+                "name": "NC",
+                "help": "CN7.10",
+                "cost": 0
+              }
+            ],
+            "ML11": [
+              {
+                "name": "NC",
+                "help": "CN7.11",
+                "cost": 0
+              }
+            ],
+            "ML12": [
+              {
+                "name": "IOREF",
+                "help": "CN7.12",
+                "cost": 0
+              }
+            ],
+            "ML13": [
+              {
+                "name": "PA13",
+                "help": "CN7.13 PA13 and PA14 are shared with SWD signals connected to STLINK-V3E. It is not recommended to use them as I/O pins.",
+                "cost": 0
+              }
+            ],
+            "ML14": [
+              {
+                "name": "NRST",
+                "help": "CN7.14",
+                "cost": 0
+              }
+            ],
+            "ML15": [
+              {
+                "name": "PA14",
+                "help": "CN7.15 PA13 and PA14 are shared with SWD signals connected to STLINK-V3E. It is not recommended to use them as I/O pins.",
+                "cost": 0
+              }
+            ],
+            "ML16": [
+              {
+                "name": "3V3",
+                "help": "CN7.16",
+                "cost": 0
+              }
+            ],
+            "ML17": [
+              {
+                "name": "PA15",
+                "help": "CN7.17. DA RIVEDERE??? Close SB7 solder bridge (factory default)",
+                "cost": 0
+              }
+            ],
+            "ML18": [
+              {
+                "name": "5V",
+                "help": "CN7.18",
+                "cost": 0
+              }
+            ],
+            "ML19": [
+              {
+                "name": "GND",
+                "help": "CN7.19",
+                "cost": 0
+              }
+            ],
+            "ML20": [
+              {
+                "name": "GND",
+                "help": "CN7.20",
+                "cost": 0
+              }
+            ],
+            "ML21": [
+              {
+                "name": "PB7",
+                "help": "CN7.21",
+                "cost": 0
+              }
+            ],
+            "ML22": [
+              {
+                "name": "GND",
+                "help": "CN7.22",
+                "cost": 0
+              }
+            ],
+            "ML23": [
+              {
+                "name": "PC13",
+                "help": "CN7.23",
+                "cost": 0
+              }
+            ],
+            "ML24": [
+              {
+                "name": "VIN",
+                "help": "CN7.24",
+                "cost": 0
+              }
+            ],
+            "ML25": [
+              {
+                "name": "PC14",
+                "help": "CN7.25",
+                "cost": 0
+              }
+            ],
+            "ML26": [
+              {
+                "name": "NC",
+                "help": "CN7.26",
+                "cost": 0
+              }
+            ],
+            "ML27": [
+              {
+                "name": "PC15",
+                "help": "CN7.27",
+                "cost": 0
+              }
+            ],
+            "ML28": [
+              {
+                "name": "PA0",
+                "help": "CN7.28",
+                "cost": 0
+              }
+            ],
+            "ML29": [
+              {
+                "name": "PF0",
+                "help": "CN7.29",
+                "cost": 0
+              }
+            ],
+            "ML30": [
+              {
+                "name": "PA1",
+                "help": "CN7.30",
+                "cost": 0
+              }
+            ],
+            "ML31": [
+              {
+                "name": "PF1",
+                "help": "CN7.31",
+                "cost": 0
+              }
+            ],
+            "ML32": [
+              {
+                "name": "PA4",
+                "help": "CN7.32",
+                "cost": 0
+              }
+            ],
+            "ML33": [
+              {
+                "name": "VBAT",
+                "help": "CN7.33",
+                "cost": 0
+              }
+            ],
+            "ML34": [
+              {
+                "name": "PB0",
+                "help": "CN7.34",
+                "cost": 0
+              }
+            ],
+            "ML35": [
+              {
+                "name": "PC2",
+                "help": "CN7.35",
+                "cost": 0
+              }
+            ],
+            "ML36": [
+              {
+                "name": "PC1",
+                "help": "CN7.36. Close SB35 solder bridge and leave SB37 open (factory default)",
+                "cost": 0
+              },
+              {
+                "name": "PB9",
+                "help": "CN7.36. Open SB35 solder bridge and close SB37",
+                "cost": 10
+              }
+            ],
+            "ML37": [
+              {
+                "name": "PC3",
+                "help": "CN7.37",
+                "cost": 0
+              }
+            ],
+            "ML38": [
+              {
+                "name": "PC0",
+                "help": "CN7.38. Close SB36 solder bridge and leave SB34 open (factory default)",
+                "cost": 0
+              },
+              {
+                "name": "PA15",
+                "help": "CN7.38. Open SB37 solder bridge and close SB34",
+                "cost": 10
+              }
+            ],
+            "MR1": [
+              {
+                "name": "PC9",
+                "help": "CN10.1",
+                "cost": 0
+              }
+            ],
+            "MR2": [
+              {
+                "name": "PC8",
+                "help": "CN10.2",
+                "cost": 0
+              }
+            ],
+            "MR3": [
+              {
+                "name": "PB8",
+                "help": "CN10.3. Close SB2 solder bridge (factory default)",
+                "cost": 0
+              }
+            ],
+            "MR4": [
+              {
+                "name": "PC6",
+                "help": "CN10.4",
+                "cost": 0
+              }
+            ],
+            "MR5": [
+              {
+                "name": "PB9",
+                "help": "CN10.5",
+                "cost": 0
+              }
+            ],
+            "MR6": [
+              {
+                "name": "PC5",
+                "help": "CN10.6. Close SB3 solder bridge (factory default)",
+                "cost": 0
+              }
+            ],
+            "MR7": [
+              {
+                "name": "VREFP",
+                "help": "CN10.7 AVDD connected to VREF+",
+                "cost": 0
+              }
+            ],
+            "MR8": [
+              {
+                "name": "5V_USB_CHGR",
+                "help": "CN10.8 5V_USB_CHGR is the 5 V power from the STLINK-V3E USB connector that rises first.\n It rises before the 5 V rising on the board",
+                "cost": 0
+              }
+            ],
+            "MR9": [
+              {
+                "name": "GND",
+                "help": "CN10.9",
+                "cost": 0
+              }
+            ],
+            "MR10": [
+              {
+                "name": "NC",
+                "help": "CN10.10",
+                "cost": 0
+              }
+            ],
+            "MR11": [
+              {
+                "name": "PA5",
+                "help": "CN10.11",
+                "cost": 0
+              }
+            ],
+            "MR12": [
+              {
+                "name": "PA12",
+                "help": "CN10.12",
+                "cost": 0
+              }
+            ],
+            "MR13": [
+              {
+                "name": "PA6",
+                "help": "CN10.13",
+                "cost": 0
+              }
+            ],
+            "MR14": [
+              {
+                "name": "PA11",
+                "help": "CN10.14",
+                "cost": 0
+              }
+            ],
+            "MR15": [
+              {
+                "name": "PA7",
+                "help": "CN10.15",
+                "cost": 0
+              }
+            ],
+            "MR16": [
+              {
+                "name": "PB12",
+                "help": "CN10.16",
+                "cost": 0
+              }
+            ],
+            "MR17": [
+              {
+                "name": "PB6",
+                "help": "CN10.17",
+                "cost": 0
+              }
+            ],
+            "MR18": [
+              {
+                "name": "PB11",
+                "help": "CN10.18",
+                "cost": 0
+              }
+            ],
+            "MR19": [
+              {
+                "name": "PC7",
+                "help": "CN10.19",
+                "cost": 0
+              }
+            ],
+            "MR20": [
+              {
+                "name": "GND",
+                "help": "CN10.20",
+                "cost": 0
+              }
+            ],
+            "MR21": [
+              {
+                "name": "PA9",
+                "help": "CN10.21",
+                "cost": 0
+              }
+            ],
+            "MR22": [
+              {
+                "name": "PB2",
+                "help": "CN10.22",
+                "cost": 0
+              }
+            ],
+            "MR23": [
+              {
+                "name": "PA8",
+                "help": "CN10.23",
+                "cost": 0
+              }
+            ],
+            "MR24": [
+              {
+                "name": "PB1",
+                "help": "CN10.24",
+                "cost": 0
+              }
+            ],
+            "MR25": [
+              {
+                "name": "PB10",
+                "help": "CN10.25",
+                "cost": 0
+              }
+            ],
+            "MR26": [
+              {
+                "name": "PB15",
+                "help": "CN10.26",
+                "cost": 0
+              }
+            ],
+            "MR27": [
+              {
+                "name": "PB4",
+                "help": "CN10.27",
+                "cost": 0
+              }
+            ],
+            "MR28": [
+              {
+                "name": "PB14",
+                "help": "CN10.28",
+                "cost": 0
+              }
+            ],
+            "MR29": [
+              {
+                "name": "PB5",
+                "help": "CN10.29",
+                "cost": 0
+              }
+            ],
+            "MR30": [
+              {
+                "name": "PB13",
+                "help": "CN10.30",
+                "cost": 0
+              }
+            ],
+            "MR31": [
+              {
+                "name": "PB3",
+                "help": "CN10.31",
+                "cost": 0
+              }
+            ],
+            "MR32": [
+              {
+                "name": "AGND",
+                "help": "CN10.32",
+                "cost": 0
+              }
+            ],
+            "MR33": [
+              {
+                "name": "PA10",
+                "help": "CN10.33",
+                "cost": 0
+              }
+            ],
+            "MR34": [
+              {
+                "name": "PC4",
+                "help": "CN10.34. Close SB33 solder bridge (factory default)",
+                "cost": 0
+              }
+            ],
+            "MR35": [
+              {
+                "name": "PA2",
+                "help": "CN10.35  Close SB33 solder bridge (factory default)",
+                "cost": 0
+              },
+              {
+                "name": "PC4",
+                "help": "CN10.35. Close SB33 solder bridge (factory default)",
+                "cost": 10
+              }
+            ],
+            "MR36": [
+              {
+                "name": "NC",
+                "help": "CN10.36",
+                "cost": 0
+              }
+            ],
+            "MR37": [
+              {
+                "name": "PA3",
+                "help": "CN10.37  Close SB33 solder bridge (factory default)",
+                "cost": 0
+              },
+              {
+                "name": "PC5",
+                "help": "CN10.37. Close SB33 solder bridge (factory default)",
+                "cost": 10
+              }
+            ],
+            "MR38": [
+              {
+                "name": "NC",
+                "help": "CN10.38",
+                "cost": 0
+              }
+            ]
+          },
+          "features": []
+        }
+      ],
+      "features": [
+        {
+          "name": "StartStopButton",
+          "type": "Button",
+          "hwVariants": [
+            {
+              "type": "PushButton",
+              "help": "",
+              "signals": {
+                "BUTTON_TRIGGER": [
+                  {
+                    "name": "PC13",
+                    "help": "",
+                    "cost": 0
+                  }
+                ]
+              },
+              "buttonTriggerEdge": "Falling Edge",
+              "buttonGpioConfig": "No Pull up - No Pull down"
+            }
+          ]
+        },
+        {
+          "name": "SerialPortCommunication",
+          "type": "SerialPortCommunication",
+          "hwVariants": [
+            {
+              "type": "Uart2WiresCommunication",
+              "help": "",
+              "signals": {
+                "UART_TX": [
+                  {
+                    "name": "PC4",
+                    "help": "CN10.35",
+                    "cost": 10
+                  },
+                  {
+                    "name": "PA2",
+                    "help": "CN10.35",
+                    "cost": 0
+                  }
+                ],
+                "UART_RX": [
+                  {
+                    "name": "PC5",
+                    "help": "CN10.37",
+                    "cost": 10
+                  },
+                  {
+                    "name": "PA3",
+                    "help": "CN10.37",
+                    "cost": 0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "hardwareFamily": "CONTROL",
+      "id": "NUCLEO-G474RE",
+      "label": "NUCLEO-G474RE",
+      "description": "STM32 Nucleo-64 development board with STM32G474RE MCU, supports Arduino and ST morpho connectivity",
+      "descVersion": 4,
+      "contentVersion": "1.0",
+      "compatibility": [
+        "FOC",
+        "sixStep"
+      ]
+    },
+    "power": [
+      {
+        "motorDrives": [
+          {
+            "name": "M1",
+            "minRatedVoltage": 10,
+            "maxRatedVoltage": 48,
+            "maxRatedCurrent": 30,
+            "resistorOffset": 0.02,
+            "connectorType": "morpho",
+            "features": [
+              {
+                "name": "CurrentSensing",
+                "type": "CurrentSensing",
+                "tRise": 1000,
+                "hwVariants": [
+                  {
+                    "type": "ThreeShunt_AmplifiedCurrents",
+                    "help": "Soldering the pins SENS2 to Vshunt_2 of connector J5 and the pins SENS3 to Vshunt_3 of the connector J6",
+                    "signals": {
+                      "CURRENT_AMPL_U": [
+                        {
+                          "name": "ML28",
+                          "help": "CN7.28. Factory default. Solder R47",
+                          "cost": 10
+                        }
+                      ],
+                      "CURRENT_AMPL_V": [
+                        {
+                          "name": "ML36",
+                          "help": "CN7.36. Factory default. Solder R48.",
+                          "cost": 10
+                        }
+                      ],
+                      "CURRENT_AMPL_W": [
+                        {
+                          "name": "ML38",
+                          "help": "CN7.38. Factory default. Solder R50",
+                          "cost": 10
+                        }
+                      ]
+                    },
+                    "shuntResistor": 0.01,
+                    "amplifyingNetworkImax": 30,
+                    "amplifyingNetworkVm": 3.3,
+                    "amplifyingNetworkPrating": 4,
+                    "offsetNetworkAttenuation": 0.909,
+                    "opAmpGain": 5.7,
+                    "polarizationOffset": 1.71
+                  },
+                  {
+                    "type": "SingleShunt_AmplifiedCurrents",
+                    "help": "Soldering the pins SENS1 to Vshunt_2 of connector J5 and the pins SENS3 to Vshunt_2 of the connector J6",
+                    "signals": {
+                      "CURRENT_AMPL": [
+                        {
+                          "name": "ML36",
+                          "help": "CN7.36. Factory default. Solder R48.",
+                          "cost": 10
+                        }
+                      ]
+                    },
+                    "shuntResistor": 0.01,
+                    "amplifyingNetworkImax": 30,
+                    "amplifyingNetworkVm": 3.3,
+                    "amplifyingNetworkPrating": 4,
+                    "offsetNetworkAttenuation": 0.909,
+                    "opAmpGain": 5.7,
+                    "polarizationOffset": 1.71
+                  },
+                  {
+                    "type": "SingleShunt_AmplifiedCurrents_noOffset",
+                    "help": "Soldering the pins SENS1 to Vshunt_2 of connector J5 and the pins SENS3 to Vshunt_2 of the connector J6. Make sure that jumpers JP1 and JP2 are open",
+                    "signals": {
+                      "CURRENT_AMPL": [
+                        {
+                          "name": "ML36",
+                          "help": "CN7.36. Factory default. Solder R48.",
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "shuntResistor": 0.01,
+                    "amplifyingNetworkImax": 31.7,
+                    "amplifyingNetworkVm": 3.3,
+                    "amplifyingNetworkPrating": 4,
+                    "opAmpGain": 10.4
+                  }
+                ]
+              },
+              {
+                "name": "PhaseVoltageGeneration",
+                "type": "PhaseVoltageGeneration",
+                "driverName": "L6398 DMOS driver",
+                "driverPN": "L6398",
+                "minDeadTime": 700,
+                "maxSwitchingFreq": 100,
+                "tNoise": 1000,
+                "hwVariants": [
+                  {
+                    "type": "DrivingHighAndLowSides",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "PWM_CHU_H": [
+                        {
+                          "name": "MR23",
+                          "help": "CN10.23. Factory default. Solder R56.",
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_CHV_H": [
+                        {
+                          "name": "MR21",
+                          "help": "CN10.21. Factory default. Solder R64.",
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_CHW_H": [
+                        {
+                          "name": "MR33",
+                          "help": "CN10.33. Factory default. Solder R70.",
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_CHU_L": [
+                        {
+                          "name": "MR15",
+                          "help": "CN10.15. Factory Default. Solder R58",
+                          "cost": 0
+                        },
+                        {
+                          "name": "MR26",
+                          "help": "CN10.26. Factory Default. Solder R86",
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_CHV_L": [
+                        {
+                          "name": "ML34",
+                          "help": "CN7.34. Factory default. Solder R67.",
+                          "cost": 0
+                        }
+                      ],
+                      "PWM_CHW_L": [
+                        {
+                          "name": "MR24",
+                          "help": "CN10.24. Factory default. Solder R72.",
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "highSideSwitchesDrivingPolarity": "Active high",
+                    "lowSideSwitchesDrivingPolarity": "Active low",
+                    "deadTime": 1000
+                  }
+                ]
+              },
+              {
+                "name": "SpeedAndPositionSensing",
+                "type": "SpeedAndPositionSensing",
+                "hwVariants": [
+                  {
+                    "type": "HallEffectSensor",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "HALLSENSOR_H1": [
+                        {
+                          "name": "ML17",
+                          "help": "CN7.17. Factory default. Solder R79",
+                          "cost": 0
+                        }
+                      ],
+                      "HALLSENSOR_H2": [
+                        {
+                          "name": "MR31",
+                          "help": "CN10.31. Factory default. Solder R81",
+                          "cost": 0
+                        }
+                      ],
+                      "HALLSENSOR_H3": [
+                        {
+                          "name": "MR25",
+                          "help": "CN10.25. Factory default. Solder R84",
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "QuadratureEncoderRelative",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "QENC_A": [
+                        {
+                          "name": "ML17",
+                          "help": "CN7.17. Factory default. Solder R79.",
+                          "cost": 0
+                        }
+                      ],
+                      "QENC_B": [
+                        {
+                          "name": "MR31",
+                          "help": "CN10.31. Factory default. Solder R81",
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "QuadratureEncoderAbsolute",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "QENC_A": [
+                        {
+                          "name": "ML17",
+                          "help": "CN7.17. Factory default. Solder R79.",
+                          "cost": 0
+                        }
+                      ],
+                      "QENC_B": [
+                        {
+                          "name": "MR31",
+                          "help": "CN10.31. Factory default. Solder R81",
+                          "cost": 0
+                        }
+                      ],
+                      "QENC_Z": [
+                        {
+                          "name": "MR25",
+                          "help": "CN10.25. Factory default. Solder R84",
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "BEMFSensingADC",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "BEMF_U": [
+                        {
+                          "name": "ML37",
+                          "help": "CN7.37. Factory default. Solder R59",
+                          "cost": 0
+                        }
+                      ],
+                      "BEMF_V": [
+                        {
+                          "name": "MR34",
+                          "help": "CN10.34. Factory default. Solder R61",
+                          "cost": 0
+                        },
+                        {
+                          "name": "MR18",
+                          "help": "CN10.18. Factory default. Solder R60",
+                          "cost": 0
+                        }
+                      ],
+                      "BEMF_W": [
+                        {
+                          "name": "MR6",
+                          "help": "CN10.6. Factory default. Solder R65",
+                          "cost": 0
+                        },
+                        {
+                          "name": "MR30",
+                          "help": "CN10.30. Factory default. Solder R62",
+                          "cost": 0
+                        },
+                        {
+                          "name": "MR11",
+                          "help": "CN10.11. Factory default. Solder R63",
+                          "cost": 0
+                        }
+                      ],
+                      "BEMF_DIVIDER": [
+                        {
+                          "name": "MR1",
+                          "help": "CN10.1",
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "dividingNetworkR1": 10000,
+                    "dividingNetworkR2": 2200
+                  }
+                ]
+              },
+              {
+                "name": "VBusSensing",
+                "type": "VBusSensing",
+                "busVoltageDivider": 19.17,
+                "hwVariants": [
+                  {
+                    "type": "VBusSensing",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "VBUS": [
+                        {
+                          "name": "ML30",
+                          "help": "CN7.30. Factory default. Solder R51",
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "busVoltageDivider": 19.17,
+                    "busVoltageDividerR1": 169,
+                    "busVoltageDividerR2": 9.3
+                  }
+                ]
+              },
+              {
+                "name": "TemperatureSensing",
+                "type": "TemperatureSensing",
+                "hwVariants": [
+                  {
+                    "type": "NTCThermistor",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "TEMPERATURE_NTC": [
+                        {
+                          "name": "ML35",
+                          "help": "CN7.35. Factory default. Solder R54",
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "v0": 1055,
+                    "t0": 25,
+                    "gain": 22.7,
+                    "maxSensorTemperature": 110
+                  }
+                ]
+              },
+              {
+                "name": "OverCurrentProtection",
+                "type": "OverCurrentProtection",
+                "hwVariants": [
+                  {
+                    "type": "OnPowerStageOCP",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "OC_TRIGGER": [
+                        {
+                          "name": "MR13",
+                          "help": "CN10.13. Factory default. Solder R78",
+                          "cost": 0
+                        },
+                        {
+                          "name": "MR14",
+                          "help": "CN10.14. Factory default. Solder R73",
+                          "cost": 0
+                        },
+                        {
+                          "name": "MR28",
+                          "help": "CN10.28. Factory default. Solder R74",
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "OCComparatorThreshold": 0.3,
+                    "OCNetworkOffset": 0,
+                    "OCNetworkGain": 0.01,
+                    "OCThreshold": 30,
+                    "OCSignalPolarity": "Active low"
+                  }
+                ]
+              },
+              {
+                "name": "CurrentLimiter",
+                "type": "CurrentLimiter",
+                "hwVariants": [
+                  {
+                    "type": "ExternalCurrentLimiter_PWM",
+                    "help": "How to enable this variant",
+                    "signals": {
+                      "PWM_REF": [
+                        {
+                          "name": "MR27",
+                          "help": "CN10.27. Factory default. Solder R77",
+                          "cost": 0
+                        }
+                      ],
+                      "HF_ETR": [
+                        {
+                          "name": "MR12",
+                          "help": "CN10.12. Factory default. Solder R52",
+                          "cost": 0
+                        }
+                      ]
+                    },
+                    "PWMDefaultFreq": 60000,
+                    "PWMRefDivider": 1,
+                    "ETRPolarity": "Active high"
+                  }
+                ]
+              }
+            ],
+            "compatibility": [
+              "FOC",
+              "sixStep"
+            ]
+          }
+        ],
+        "connectorTypes": [
+          "morpho"
+        ],
+        "hardwareFamily": "POWER",
+        "id": "X-NUCLEO-IHM08M1",
+        "label": "X-NUCLEO-IHM08M1",
+        "description": "Low-Voltage BLDC motor driver expansion board based on STL220N6F7 for STM32 Nucleo",
+        "descVersion": 4,
+        "contentVersion": "1.0",
+        "compatibility": [
+          "FOC",
+          "sixStep"
+        ]
+      }
+    ],
+    "motor": [
+      {
+        "BEmfConstant": 0.8218573927879333,
+        "compatibility": [
+          "FOC",
+          "sixStep"
+        ],
+        "description": "A2212 1000KV Brushless Outrunner Motor 13T",
+        "friction": 0.49,
+        "hardwareFamily": "MOTOR",
+        "id": "A2212 13T",
+        "inertia": 0.55,
+        "label": "A2212 13T",
+        "ls": 0.02,
+        "magneticStructure": {
+          "type": "SM-PMSM"
+        },
+        "maxRatedSpeed": 9864,
+        "nominalCurrent": 10,
+        "nominalDCVoltage": 11.045379638671875,
+        "polePairs": 7,
+        "rs": 0.10000000149011612
+      }
+    ],
+    "connections": [
+      {
+        "motor": 0,
+        "power": 0,
+        "drive": 0,
+        "ctrlConn": 0
+      }
+    ],
+    "constrains": {
+      "connectAlgoVersion": 1,
+      "MCUParamVersion": 1,
+      "motors": [
+        {
+          "motor": "M1",
+          "features": [
+            {
+              "name": "CurrentSensing",
+              "type": "CurrentSensing",
+              "hwVariants": [
+                {
+                  "name": "ThreeShunt_AmplifiedCurrents",
+                  "swVariants": [
+                    {
+                      "name": "DualADCs",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC1",
+                            "ADC2"
+                          ],
+                          "sharedSignal": "CURRENT_AMPL_V",
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC1_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC2_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC2_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC1_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 40
+                        }
+                      ]
+                    },
+                    {
+                      "name": "DualADCsNoSharedPhase",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC2",
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC1_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC1_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC2_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        },
+                        {
+                          "ip": [
+                            "ADC2",
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC1_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC2_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC1_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        },
+                        {
+                          "ip": [
+                            "ADC2",
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC1_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC2_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC2_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        },
+                        {
+                          "ip": [
+                            "ADC1",
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC2_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC1_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC1_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        },
+                        {
+                          "ip": [
+                            "ADC1",
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC2_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC1_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC2_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        },
+                        {
+                          "ip": [
+                            "ADC1",
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC2_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC2_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC1_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        }
+                      ]
+                    },
+                    {
+                      "name": "SingleADC",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC1_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC1_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC1_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        },
+                        {
+                          "ip": [
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL_U",
+                              "pin": "PA0",
+                              "peripheral": "ADC2_IN1",
+                              "help": {
+                                "en": [
+                                  "CN7.28. Factory default. Solder R47"
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_V",
+                              "pin": "PC1",
+                              "peripheral": "ADC2_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            },
+                            {
+                              "name": "CURRENT_AMPL_W",
+                              "pin": "PC0",
+                              "peripheral": "ADC2_IN6",
+                              "help": {
+                                "en": [
+                                  "CN7.38. Factory default. Solder R50"
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 30
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "SingleShunt_AmplifiedCurrents",
+                  "swVariants": [
+                    {
+                      "name": "SingleWire",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL",
+                              "pin": "PC1",
+                              "peripheral": "ADC1_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 10
+                        },
+                        {
+                          "ip": [
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL",
+                              "pin": "PC1",
+                              "peripheral": "ADC2_IN7",
+                              "help": {
+                                "en": [
+                                  "CN7.36. Factory default. Solder R48."
+                                ]
+                              }
+                            }
+                          ],
+                          "cost": 10
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "SingleShunt_AmplifiedCurrents_noOffset",
+                  "swVariants": [
+                    {
+                      "name": "SingleWire",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL",
+                              "pin": "PC1",
+                              "peripheral": "ADC1_IN7",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        },
+                        {
+                          "ip": [
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "CURRENT_AMPL",
+                              "pin": "PC1",
+                              "peripheral": "ADC2_IN7",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "PhaseVoltageGeneration",
+              "type": "PhaseVoltageGeneration",
+              "hwVariants": [
+                {
+                  "name": "DrivingHighAndLowSides",
+                  "swVariants": [
+                    {
+                      "name": "SingleTimer",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "TIM1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "PWM_CHU_H",
+                              "pin": "PA8",
+                              "peripheral": "TIM1_CH1",
+                              "help": ""
+                            },
+                            {
+                              "name": "PWM_CHV_H",
+                              "pin": "PA9",
+                              "peripheral": "TIM1_CH2",
+                              "help": ""
+                            },
+                            {
+                              "name": "PWM_CHW_H",
+                              "pin": "PA10",
+                              "peripheral": "TIM1_CH3",
+                              "help": ""
+                            },
+                            {
+                              "name": "PWM_CHU_L",
+                              "pin": "PA7",
+                              "peripheral": "TIM1_CH1N",
+                              "help": ""
+                            },
+                            {
+                              "name": "PWM_CHV_L",
+                              "pin": "PB0",
+                              "peripheral": "TIM1_CH2N",
+                              "help": ""
+                            },
+                            {
+                              "name": "PWM_CHW_L",
+                              "pin": "PB1",
+                              "peripheral": "TIM1_CH3N",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "SpeedAndPositionSensing",
+              "type": "SpeedAndPositionSensing",
+              "hwVariants": [
+                {
+                  "name": "HallEffectSensor",
+                  "swVariants": [
+                    {
+                      "name": "SingleTimer",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "TIM2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "HALLSENSOR_H1",
+                              "pin": "PA15",
+                              "peripheral": "TIM2_CH1",
+                              "help": ""
+                            },
+                            {
+                              "name": "HALLSENSOR_H2",
+                              "pin": "PB3",
+                              "peripheral": "TIM2_CH2",
+                              "help": ""
+                            },
+                            {
+                              "name": "HALLSENSOR_H3",
+                              "pin": "PB10",
+                              "peripheral": "TIM2_CH3",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "QuadratureEncoderRelative",
+                  "swVariants": [
+                    {
+                      "name": "SingleTimer",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "TIM2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "QENC_A",
+                              "pin": "PA15",
+                              "peripheral": "TIM2_CH1",
+                              "help": ""
+                            },
+                            {
+                              "name": "QENC_B",
+                              "pin": "PB3",
+                              "peripheral": "TIM2_CH2",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "swVariants": [
+                    {
+                      "solutions": [
+                        {
+                          "ip": [
+                            "TIM2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "QENC_A",
+                              "pin": "PA15",
+                              "peripheral": "TIM2_CH1",
+                              "help": ""
+                            },
+                            {
+                              "name": "QENC_B",
+                              "pin": "PB3",
+                              "peripheral": "TIM2_CH2",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ],
+                      "independentWires": {
+                        "QENC_Z": [
+                          {
+                            "ip": "GPIO",
+                            "pin": "PB10",
+                            "peripheral": "GPIO_Output",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ]
+                      },
+                      "name": "SingleTimerAndGPIOs"
+                    }
+                  ],
+                  "name": "QuadratureEncoderAbsolute"
+                },
+                {
+                  "name": "BEMFSensingADC",
+                  "swVariants": [
+                    {
+                      "name": "IndependentWires",
+                      "independentWires": {
+                        "BEMF_U": [
+                          {
+                            "ip": "ADC1",
+                            "pin": "PC3",
+                            "peripheral": "ADC1_IN9",
+                            "help": "",
+                            "cost": 0
+                          },
+                          {
+                            "ip": "ADC2",
+                            "pin": "PC3",
+                            "peripheral": "ADC2_IN9",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ],
+                        "BEMF_V": [
+                          {
+                            "ip": "ADC2",
+                            "pin": "PC4",
+                            "peripheral": "ADC2_IN5",
+                            "help": "",
+                            "cost": 0
+                          },
+                          {
+                            "ip": "ADC1",
+                            "pin": "PB11",
+                            "peripheral": "ADC1_IN14",
+                            "help": "",
+                            "cost": 0
+                          },
+                          {
+                            "ip": "ADC2",
+                            "pin": "PB11",
+                            "peripheral": "ADC2_IN14",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ],
+                        "BEMF_W": [
+                          {
+                            "ip": "ADC2",
+                            "pin": "PC5",
+                            "peripheral": "ADC2_IN11",
+                            "help": "",
+                            "cost": 0
+                          },
+                          {
+                            "ip": "ADC3",
+                            "pin": "PB13",
+                            "peripheral": "ADC3_IN5",
+                            "help": "",
+                            "cost": 0
+                          },
+                          {
+                            "ip": "ADC2",
+                            "pin": "PA5",
+                            "peripheral": "ADC2_IN13",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ],
+                        "BEMF_DIVIDER": [
+                          {
+                            "ip": "GPIO",
+                            "pin": "PC9",
+                            "peripheral": "GPIO_Output",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "VBusSensing",
+              "type": "VBusSensing",
+              "hwVariants": [
+                {
+                  "name": "VBusSensing",
+                  "swVariants": [
+                    {
+                      "name": "SingleWire",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "VBUS",
+                              "pin": "PA1",
+                              "peripheral": "ADC1_IN2",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        },
+                        {
+                          "ip": [
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "VBUS",
+                              "pin": "PA1",
+                              "peripheral": "ADC2_IN2",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "TemperatureSensing",
+              "type": "TemperatureSensing",
+              "hwVariants": [
+                {
+                  "name": "NTCThermistor",
+                  "swVariants": [
+                    {
+                      "name": "SingleWire",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "ADC1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "TEMPERATURE_NTC",
+                              "pin": "PC2",
+                              "peripheral": "ADC1_IN8",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        },
+                        {
+                          "ip": [
+                            "ADC2"
+                          ],
+                          "signals": [
+                            {
+                              "name": "TEMPERATURE_NTC",
+                              "pin": "PC2",
+                              "peripheral": "ADC2_IN8",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "OverCurrentProtection",
+              "type": "OverCurrentProtection",
+              "hwVariants": [
+                {
+                  "name": "OnPowerStageOCP",
+                  "swVariants": [
+                    {
+                      "name": "SingleWire",
+                      "solutions": [
+                        {
+                          "ip": [
+                            "TIM1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "OC_TRIGGER",
+                              "pin": "PA6",
+                              "peripheral": "TIM1_BKIN",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        },
+                        {
+                          "ip": [
+                            "TIM8"
+                          ],
+                          "signals": [
+                            {
+                              "name": "OC_TRIGGER",
+                              "pin": "PA6",
+                              "peripheral": "TIM8_BKIN",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        },
+                        {
+                          "ip": [
+                            "TIM1"
+                          ],
+                          "signals": [
+                            {
+                              "name": "OC_TRIGGER",
+                              "pin": "PA11",
+                              "peripheral": "TIM1_BKIN2",
+                              "help": ""
+                            }
+                          ],
+                          "cost": 0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "CurrentLimiter",
+              "type": "CurrentLimiter",
+              "hwVariants": [
+                {
+                  "name": "ExternalCurrentLimiter_PWM",
+                  "swVariants": [
+                    {
+                      "name": "IndependentWires",
+                      "independentWires": {
+                        "PWM_REF": [
+                          {
+                            "ip": "TIM16",
+                            "pin": "PB4",
+                            "peripheral": "TIM16_CH1",
+                            "help": "",
+                            "cost": 0
+                          },
+                          {
+                            "ip": "TIM3",
+                            "pin": "PB4",
+                            "peripheral": "TIM3_CH1",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ],
+                        "HF_ETR": [
+                          {
+                            "ip": "TIM1",
+                            "pin": "PA12",
+                            "peripheral": "TIM1_ETR",
+                            "help": "",
+                            "cost": 0
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "features": [],
+      "errors": [],
+      "warnings": [],
+      "info": []
+    },
+    "bridges": []
+  },
+  "details": {
+    "steps": {
+      "powerSupply_0": {
+        "nominalDcBusVoltage": 12,
+        "nominalCurrent": 10,
+        "maxCurrent_pk": "Number.NaN",
+        "icl": {
+          "enable": false,
+          "polarity": "",
+          "changeStateAfter": "Number.NaN",
+          "capChargingDelay": "Number.NaN",
+          "voltageThreshold": "Number.NaN"
+        }
+      },
+      "motor_0": {
+        "label": "",
+        "description": "",
+        "polePairs": "Number.NaN",
+        "mmsType": "",
+        "rs": "Number.NaN",
+        "ls": "Number.NaN",
+        "mmsLd_lq_ratio": "Number.NaN",
+        "maxCurrent": "Number.NaN",
+        "maxDCVoltage": 12,
+        "BEmfConstant": "Number.NaN",
+        "inertia": "Number.NaN",
+        "friction": "Number.NaN",
+        "maxRatedSpeed": "Number.NaN",
+        "hasHallSensor": false,
+        "hallSensor": {
+          "sensorsDisplacement": "Number.NaN",
+          "placementElectricalAngle": "Number.NaN"
+        },
+        "hasQuadratureEncoder": false,
+        "quadratureEncoder": {
+          "pulsesPerMechanicalRevolution": "Number.NaN",
+          "hasIndexPin": false
+        },
+        "nominalCurrent": "Number.NaN",
+        "nominalDCVoltage": "Number.NaN"
+      },
+      "powerSwitches_0": {
+        "setting": {
+          "PWMFrequency": 70000,
+          "chargeBootCapDuty": "Number.NaN",
+          "chargeBootCapMs": "Number.NaN",
+          "drivingTopology": ""
+        },
+        "modulationFlags": {
+          "fastDemag": false,
+          "quasiSynchronous": false
+        }
+      },
+      "driveManagement_0": {
+        "executionRate": "Number.NaN",
+        "speedReg": {
+          "executionRate": "Number.NaN",
+          "targetSpeed": "Number.NaN",
+          "commutationTime": "Number.NaN",
+          "KpKi": {
+            "P": {
+              "num": "Number.NaN",
+              "den": "Number.NaN"
+            },
+            "I": {
+              "num": "Number.NaN",
+              "den": "Number.NaN"
+            }
+          },
+          "autoPI": true
+        },
+        "demag": {
+          "runTime": "Number.NaN",
+          "minTime": "Number.NaN",
+          "speedThresh": "Number.NaN",
+          "startUpTime": "Number.NaN"
+        },
+        "debugSettings": {
+          "openLoop": {
+            "enabled": false
+          }
+        }
+      }
+    }
+  }
+}

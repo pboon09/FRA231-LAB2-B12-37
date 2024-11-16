@@ -1,0 +1,17 @@
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:60:13:PWMC_Init	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:90:13:PWMC_SetPhaseVoltage	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:103:13:PWMC_LoadNextStep	28	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:194:13:PWMC_TurnOnLowSides	8	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:228:13:PWMC_SwitchOnPWM	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:259:13:PWMC_SetADCTriggerChannel	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:273:13:PWMC_SwitchOffPWM	4	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:302:15:PWMC_BRK_IRQHandler	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:315:13:PWMC_DisableHighFreqTask	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:326:6:PWMC_SetAlignFlag	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:336:7:PWMC_ElAngleToStep	4	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:357:7:PWMC_ForceNextStep	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:378:10:PWMC_IsFaultOccurred	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:415:9:PWMC_GetLSModConfig	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:425:6:PWMC_SetLSModConfig	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:441:9:PWMC_GetQuasiSynchState	0	static
+C:/Users/pboon/OneDrive/Desktop/KMUTT/RMX_Lab/FRA231-LAB2-B12-37/BLDC_6Step_Control/MCSDK_v6.3.2-Full/MotorControl/MCSDK/MCLib/Any/Src/pwmc_sixstep.c:452:6:PWMC_SetQuasiSynchState	0	static
