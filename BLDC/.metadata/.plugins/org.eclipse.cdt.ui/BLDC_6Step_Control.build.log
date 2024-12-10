@@ -1,0 +1,10 @@
+16:12:34 **** Incremental Build of configuration Debug for project BLDC_6Step_Control ****
+make -j12 all 
+arm-none-eabi-size  BLDC_6Step_Control.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36140	   1160	   7160	  44460	   adac	BLDC_6Step_Control.elf
+Finished building: default.size.stdout
+ 
+
+16:12:35 Build Finished. 0 errors, 0 warnings. (took 424ms)
+

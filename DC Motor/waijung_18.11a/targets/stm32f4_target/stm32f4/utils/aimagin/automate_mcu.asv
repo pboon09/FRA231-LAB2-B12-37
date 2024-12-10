@@ -1,0 +1,966 @@
+function s = automate_mcu ()
+
+mcu_list = [];
+
+DEVICES_LIST = {...
+	'STM32F401CBU',...
+	'STM32F401CCU',...
+	'STM32F401CDU',...
+	'STM32F401CEU',...
+	'STM32F401RBT',...
+	'STM32F401RCT',...
+	'STM32F401RDT',...
+	'STM32F401RET',...
+	'STM32F401VBT',...
+	'STM32F401VCT',...
+	'STM32F401VDT',...
+	'STM32F401VET',...
+	...
+	'STM32F405OEY',...
+	'STM32F405OGY',...
+	'STM32F405RGT',...
+	'STM32F405VGT',...
+	'STM32F405ZGT',...
+	'STM32F407IET',...
+	'STM32F407IGT',...
+	'STM32F407VET',...
+	'STM32F407VGT',...
+	'STM32F407ZET',...
+	'STM32F407ZGT',...
+	...
+	'STM32F415OGY',...
+	'STM32F415RGT',...
+	'STM32F415VGT',...
+	'STM32F415ZGT',...
+	'STM32F417IET',...
+	'STM32F417IGT',...
+	'STM32F417VET',...
+	'STM32F417VGT',...
+	'STM32F417ZET',...
+	'STM32F417ZGT',...
+	...
+	'STM32F410C8U',...
+	'STM32F410CBT',...
+	'STM32F410R8T',...
+	'STM32F410RBT',...
+	'STM32F410T8Y',...
+	'STM32F410TBY',...
+	'STM32F411CCU',...
+	'STM32F411CEU',...
+	'STM32F411RCT',...
+	'STM32F411RET',...
+	'STM32F411VCT',...
+	'STM32F411VET',...
+	'STM32F412CEU',...
+	'STM32F412CGU',...
+	'STM32F412RET',...
+	'STM32F412RGT',...
+	'STM32F412VET',...
+	'STM32F412VGT',...
+	'STM32F412ZET',...
+	'STM32F412ZGT',...
+	...
+	'STM32F427AGH',...
+	'STM32F427AIH',...
+	'STM32F427IGH',...
+	'STM32F427IIH',...
+	'STM32F427VGT',...
+	'STM32F427VIT',...
+	'STM32F427ZGT',...
+	'STM32F427ZIT',...
+	'STM32F429AGH',...
+	'STM32F429AIH',...
+	'STM32F429BET',...
+	'STM32F429BGT',...
+	'STM32F429BIT',...
+	'STM32F429IEH',...
+	'STM32F429IGH',...
+	'STM32F429IIH',...
+	'STM32F429NEH',...
+	'STM32F429NGH',...
+	'STM32F429NIH',...
+	'STM32F429VET',...
+	'STM32F429VGT',...
+	'STM32F429VIT',...
+	'STM32F429ZET',...
+	'STM32F429ZGT',...
+	'STM32F429ZIT',...
+	'STM32F437AIH',...
+	'STM32F437IGH',...
+	'STM32F437IIH',...
+	'STM32F437VGT',...
+	'STM32F437VIT',...
+	'STM32F437ZGT',...
+	'STM32F437ZIT',...
+	'STM32F439AIH',...
+	'STM32F439BGT',...
+	'STM32F439BIT',...
+	'STM32F439IGH',...
+	'STM32F439IIH',...
+	'STM32F439NGH',...
+	'STM32F439NIH',...
+	'STM32F439VGT',...
+	'STM32F439VIT',...
+	'STM32F439ZGT',...
+	'STM32F439ZIT',...
+	'STM32F446MCY',...
+	'STM32F446MEY',...
+	'STM32F446RCT',...
+	'STM32F446RET',...
+	'STM32F446VCT',...
+	'STM32F446VET',...
+	'STM32F446ZCT',...
+	'STM32F446ZET',...
+	'STM32F469AEH',...
+	'STM32F469AGH',...
+	'STM32F469AIH',...
+	'STM32F469BET',...
+	'STM32F469BGT',...
+	'STM32F469BIT',...
+	'STM32F469IEH',...
+	'STM32F469IGH',...
+	'STM32F469IIH',...
+	'STM32F469NEH',...
+	'STM32F469NGH',...
+	'STM32F469NIH',...
+	'STM32F469VIT',...
+	'STM32F469ZIT',...
+	'STM32F479AGH',...
+	'STM32F479AIH',...
+	'STM32F479BGT',...
+	'STM32F479BIT',...
+	'STM32F479IGH',...
+	'STM32F479IIT',...
+	'STM32F479NGH',...
+	'STM32F479NIH',...
+	'STM32F479VIT',...
+	'STM32F479ZIT'...
+	};
+
+% File
+fid = fopen('xml.xml','w');
+
+% === Head ===
+fprintf(fid,'\t<tables type="waijung_dat">\n');
+
+% === Table ===
+fprintf(fid,'\t\t<table name="waijung_mcu_resources">\n');
+
+for pn_idx = 1:size(DEVICES_LIST,2)
+	pn = char(DEVICES_LIST{pn_idx});
+	
+	ret.family = [];
+	ret.pincount = [];
+	ret.package = [];
+	ret.flashsize = [];
+	ret.ramsize = [];
+	ret.mcuname = [];
+	ret.io = [];
+	
+	mcu = char(pn(1:9));
+	pcnt = char(pn(10));
+	flsh = char(pn(11));
+	pkg = char(pn(12));
+	
+	% === Flash size ===
+	flash_code = {'8','B','C','D','E','G','I'};
+	flahs_size_kb = [64,128,256,384,512,1024,2048];
+	idx = find(strcmp (flash_code,flsh));
+	if isempty(idx)
+		error('Invalid flash size code.');
+	else
+		ret.flashsize = flahs_size_kb(idx);
+	end
+	
+	% === Pin count ===
+	pincount_code = {'T','C','R','M','O','V','Z','I','A','B','N'};
+	pincount_num = {'36','48','64','81','90','100','144','176','168','208','216'};
+	idx = find(strcmp (pincount_code,pcnt), 1);
+	if isempty(idx)
+		error ('Invlalid pin count code.');
+	else
+		ret.pincount = char(pincount_num(idx));
+	end
+	
+	% === Package ===
+	package_code = {'H','I','J','T','U','Y'};
+	package_str = {'BGA','UFBGA','UFBGA','LQFP','UFQFPN','WLCSP'};
+	idx = find(strcmp (package_code,pkg), 1);
+	if isempty(idx)
+		error ('Invalid package code.');
+	else
+		ret.package = char(package_str(idx));
+	end
+	
+	% mcu name
+	ret.mcuname = [mcu pcnt flsh ' (' ret.package ret.pincount ')'];
+	ret.mcuid = [mcu pcnt flsh flsh ret.package ret.pincount];
+	
+	% Package
+	switch [ret.package ret.pincount]
+		case 'WLCSP36'
+			ret.io = {...
+				'C13','C14','C15','H0','H1','A0','A2','A3','A5',...
+				'C4','B2','B10','B12',...
+				'A8','A12','A13','A14','A15','B3','B4','B5','B6',...
+				'B7','B8','B9'};
+			
+		case {'UFQFPN48','LQFP48'}
+			ret.io = {...
+				'C13','C14','C15','H0','H1','A0','A1','A2','A3','A4','A5','A6',...
+				'A7','C4','B0','B1','B2','B10','B12','B13','B14','B15',...
+				'A8','A9','A10','A11','A12','A13','A14','A15','B3','B4','B5','B6',...
+				'B7','B8','B9'};
+			
+		case 'LQFP64'
+			ret.io = {...
+				'C13','C14','C15','H0','H1','C0','C1','C2','C3','A0','A1','A2','A3','A4','A5','A6',...
+				'A7','C4','C5','B0','B1','B2','B10','B11','B12','B13','B14','B15','C6','C7','C8','C9',...
+				'A8','A9','A10','A11','A12','A13','A14','A15','C10','C11','C12','D2','B3','B4','B5','B6',...
+				'B7','B8','B9'};
+			
+		case 'WLCSP81'
+			ret.io = {...
+				'E2','E3','E4','C13','C14','C15','H0','H1','C0','C2','C3','A0','A1',...
+				'A2','A3','A4','A5','A6','A7','C4','B0','B1','B2','E7','E8','E9','E10',...
+				'B10','B12','B13','B14','B15','D11','D12','D13',...
+				'C6','C7','C8','C9','A8','A9','A10','A11','A12','A13','A14','A15','C10','C11',...
+				'C12','D0','D1','D2','D4','D6','D7','B3','B4','B5','B6','B7','B8','B9'};
+			
+		case 'WLCSP90'
+			ret.io = {...
+				'C13','C14','C15','H0','H1','C0','C2','C3','A0','A1','A2','A3','A4','A5','A6','A7',...
+				'B0','B1','B2','E7','E8','E9','E10','E11','E12','E13','E14','E15','B10','B11','B12','B13',...
+				'B14','B15','D8','D9','D10','D11','D12','D14','D15','C6','C7','C8','C9','A8','A9','A10',...
+				'A11','A12','A13','I0','I1','A14','A15','C10','C11','C12','D0','D1','D2','D4','D5','D6',...
+				'D7','B3','B4','B5','B6','B7','B8','B9'};
+			
+		case 'LQFP100'
+			ret.io = {...
+				'E2','E3','E4','E5','E6','C13','C14','C15','H0','H1','C0','C1','C2','C3','A0','A1',...
+				'A2','A3','A4','A5','A6','A7','C4','C5','B0','B1','B2','E7','E8','E9','E10','E11',...
+				'E12','E13','E14','E15','B10','B11','B12','B13','B14','B15','D8','D9','D10','D11','D12','D13',...
+				'D14','D15','C6','C7','C8','C9','A8','A9','A10','A11','A12','A13','A14','A15','C10','C11',...
+				'C12','D0','D1','D2','D3','D4','D5','D6','D7','B3','B4','B5','B6','B7','B8','B9',...
+				'E0','E1'};
+			
+		case 'LQFP144'
+			ret.io = {...
+				'E2','E3','E4','E5','E6','C13','C14','C15','F0','F1','F2','F3','F4','F5','F6','F7',...
+				'F8','F9','F10','H0','H1','C0','C1','C2','C3','A0','A1','A2','A3','A4','A5','A6',...
+				'A7','C4','C5','B0','B1','B2','F11','F12','F13','F14','F15','G0','G1','E7','E8','E9',...
+				'E10','E11','E12','E13','E14','E15','B10','B11','B12','B13','B14','B15','D8','D9','D10','D11',...
+				'D12','D13','D14','D15','G2','G3','G4','G5','G6','G7','G8','C6','C7','C8','C9','A8',...
+				'A9','A10','A11','A12','A13','A14','A15','C10','C11','C12','D0','D1','D2','D3','D4','D5',...
+				'D6','D7','G9','G10','G11','G12','G13','G14','G15','B3','B4','B5','B6','B7','B8','B9',...
+				'E0','E1'};
+			
+		case {'BGA169','BGA168','UFBGA169','WLCSP168'}
+			ret.io = {...
+				'E2','E3','E4','E5','E6','C13','C14','C15','I9','I10','F0','F1','F2','F3',...
+				'F4','F5','F10','H0','H1','C0','C1','C2','C3','A0','A1','A2',...
+				'H2','H3','H4','H5','A3','A4','A5','A6','A7','C4','C5','B0','B1','B2','F11','F12',...
+				'F13','F14','F15','G0','G1','E7','E8','E9','E10','E11','E12','E13','E14','E15','B10','B11',...
+				'H6','H7','H8','H9','H10','H11','H12','B12','B13','B14','B15','D8','D9','D10','D11','D12',...
+				'D13','D14','D15','G2','G4','G5','G6','G7','G8','C6','C7','C8','C9','A8','A9',...
+				'A10','A11','A12','A13','H13','H14','H15','I0','I1','I2','I3','A14','A15','C10','C11','C12',...
+				'D0','D1','D2','D3','D4','D5','D6','D7','G10','G11','G12','G15','B3',...
+				'B4','B5','B6','B7','B8','B9','E0','E1','I4','I5','I6','I7'};
+			
+		case {'BGA176','UFBGA176','LQFP176'}
+			ret.io = {...
+				'E2','E3','E4','E5','E6','I8','C13','C14','C15','I9','I10','I11','F0','F1','F2','F3',...
+				'F4','F5','F6','F7','F8','F9','F10','H0','H1','C0','C1','C2','C3','A0','A1','A2',...
+				'H2','H3','H4','H5','A3','A4','A5','A6','A7','C4','C5','B0','B1','B2','F11','F12',...
+				'F13','F14','F15','G0','G1','E7','E8','E9','E10','E11','E12','E13','E14','E15','B10','B11',...
+				'H6','H7','H8','H9','H10','H11','H12','B12','B13','B14','B15','D8','D9','D10','D11','D12',...
+				'D13','D14','D15','G2','G3','G4','G5','G6','G7','G8','C6','C7','C8','C9','A8','A9',...
+				'A10','A11','A12','A13','H13','H14','H15','I0','I1','I2','I3','A14','A15','C10','C11','C12',...
+				'D0','D1','D2','D3','D4','D5','D6','D7','G9','G10','G11','G12','G13','G14','G15','B3',...
+				'B4','B5','B6','B7','B8','B9','E0','E1','I4','I5','I6','I7'};
+			
+		case 'LQFP208'
+			ret.io = {...
+				'E2','E3','E4','E5','E6','I8','C13','C14','C15','I9','I10','I11','F0','F1','F2','I12','I13','I14','F3',...
+				'F4','F5','F6','F7','F8','F9','F10','H0','H1','C0','C1','C2','C3','A0','A1','A2','H2','H3','H4','H5',...
+				'H2','H3','H4','H5','A3','A4','A5','A6','A7','C4','C5','B0','B1','B2','I15','J0','J1','J2','J3','J4','F11','F12',...
+				'F13','F14','F15','G0','G1','E7','E8','E9','E10','E11','E12','E13','E14','E15','B10','B11',...
+				'J5','H6','H7','H8','H9','H10','H11','H12','B12','B13','B14','B15','D8','D9','D10','D11','D12',...
+				'D13','D14','D15','J6','J7','J8','J9','J10','J11','K0','K1','K2','G2','G3','G4','G5','G6','G7','G8','C6','C7','C8','C9','A8','A9',...
+				'A10','A11','A12','A13','H13','H14','H15','I0','I1','I2','I3','A14','A15','C10','C11','C12',...
+				'D0','D1','D2','D3','D4','D5','D6','D7','J12','J13','J14','J15','G9','G10','G11','G12','G13','G14','K3','K4','K5','K6','K7','G15','B3',...
+				'B4','B5','B6','B7','B8','B9','E0','E1','I4','I5','I6','I7'};
+			
+		case 'BGA216'
+			ret.io = {...
+				'E2','E3','E4','E5','E6','I8','C13','C14','C15','I9','I10','I11','F0','F1','F2','I12','I13','I14','F3',...
+				'F4','F5','F6','F7','F8','F9','F10','H0','H1','C0','C1','C2','C3','A0','A1','A2','H2','H3','H4','H5',...
+				'H2','H3','H4','H5','A3','A4','A5','A6','A7','C4','C5','B0','B1','B2','I15','J0','J1','J2','J3','J4','F11','F12',...
+				'F13','F14','F15','G0','G1','E7','E8','E9','E10','E11','E12','E13','E14','E15','B10','B11',...
+				'J5','H6','H7','H8','H9','H10','H11','H12','B12','B13','B14','B15','D8','D9','D10','D11','D12',...
+				'D13','D14','D15','J6','J7','J8','J9','J10','J11','K0','K1','K2','G2','G3','G4','G5','G6','G7','G8','C6','C7','C8','C9','A8','A9',...
+				'A10','A11','A12','A13','H13','H14','H15','I0','I1','I2','I3','A14','A15','C10','C11','C12',...
+				'D0','D1','D2','D3','D4','D5','D6','D7','J12','J13','J14','J15','G9','G10','G11','G12','G13','G14','K3','K4','K5','K6','K7','G15','B3',...
+				'B4','B5','B6','B7','B8','B9','E0','E1','I4','I5','I6','I7'};
+			
+		otherwise
+			error (['Invalid package: ' ret.package ret.pincount]);
+	end
+	
+	% Basic peripheral
+	ret.adc = [];
+	ret.adc{1} = {'A0','A1','A2','A3','A4','A5','A6','A7','B0','B1','C0','C1','C2','C3','C4','C5'};
+	ret.adc{2} = {'A0','A1','A2','A3','A4','A5','A6','A7','B0','B1','C0','C1','C2','C3','C4','C5'};
+	ret.adc{3} = {'A0','A1','A2','A3','F6','F7','F8','F9','F10','F3','C0','C1','C2','C3','F4','F5'};
+	
+	ret.can = [];
+	ret.can{1}.tx = {'A12','B9','D1','H13'};
+	ret.can{1}.rx = {'A11','B8','D0','I9'};
+	ret.can{2}.tx = {'B6','B13'};
+	ret.can{2}.rx = {'B5','B12'};
+	
+	ret.dac = [];
+	ret.dac{1} = {'A4'};
+	ret.dac{2} = {'A5'};
+	
+	ret.uart = [];
+	ret.uart{1}.tx = {'A9','B6'};
+	ret.uart{1}.rx = {'A10','B7'};
+	ret.uart{1}.cts = {'A11'};
+	ret.uart{1}.rts = {'A12'};
+	ret.uart{2}.tx = {'A2','D5'};
+	ret.uart{2}.rx = {'A3','D6'};
+	ret.uart{2}.cts = {'A0','D3'};
+	ret.uart{2}.rts = {'A1','D4'};
+	ret.uart{3}.tx = {'B10','C10','D8'};
+	ret.uart{3}.rx = {'B11','C11','D9'};
+	ret.uart{3}.cts = {'B13','D11'};
+	ret.uart{3}.rts = {'B14','D12'};
+	ret.uart{4}.tx = {'A0','C10'};
+	ret.uart{4}.rx = {'A1','C11'};
+	ret.uart{4}.cts = {};
+	ret.uart{4}.rts = {};
+	ret.uart{5}.tx = {'C12'};
+	ret.uart{5}.rx = {'D2'};
+	ret.uart{5}.cts = {};
+	ret.uart{5}.rts = {};
+	ret.uart{6}.tx = {'C6','G14'};
+	ret.uart{6}.rx = {'C7','G9'};
+	ret.uart{6}.cts = {'G13','G15'};
+	ret.uart{6}.rts = {'G8','G12'};
+	
+	ret.i2c = [];
+	ret.i2c{1}.scl = {'B6','B8'};
+	ret.i2c{1}.sda = {'B7','B9'};
+	ret.i2c{2}.scl = {'B10','F1','H4'};
+	ret.i2c{2}.sda = {'B11','F0','H5'};
+	ret.i2c{3}.scl = {'A8','H7'};
+	ret.i2c{3}.sda = {'C9','H8'};
+	
+	ret.spi = [];
+	ret.spi{1}.nss = {'A4','A15'};
+	ret.spi{1}.sck = {'A5','B3'};
+	ret.spi{1}.miso = {'A6','B4'};
+	ret.spi{1}.mosi = {'A7','B5'};
+	ret.spi{2}.nss = {'B9','B12','I0'};
+	ret.spi{2}.sck = {'B10','B13','I1'};
+	ret.spi{2}.miso = {'B14','C2','I2'};
+	ret.spi{2}.mosi = {'B15','C3','I3'};
+	ret.spi{3}.nss = {'A4','15'};
+	ret.spi{3}.sck = {'B3','C10'};
+	ret.spi{3}.miso = {'B4','C11'};
+	ret.spi{3}.mosi = {'B5','C12'};
+	
+	ret.timer = [];
+	% TIM1: CH1, CH2, CH3, CH4
+	ret.timer{1}.ch1 = {'A8','E9'};
+	ret.timer{1}.ch2 = {'A9','E11'};
+	ret.timer{1}.ch3 = {'A10','E13'};
+	ret.timer{1}.ch4 = {'A11','E14'};
+	% TIM2
+	ret.timer{2}.ch1 = {'A0','A5','A15'};
+	ret.timer{2}.ch2 = {'A1','B3'};
+	ret.timer{2}.ch3 = {'A2','B10'};
+	ret.timer{2}.ch4 = {'A3','B11'};
+	% TIM3
+	ret.timer{3}.ch1 = {'A6','B4','C6'};
+	ret.timer{3}.ch2 = {'A7','B5','C7'};
+	ret.timer{3}.ch3 = {'B0','C8'};
+	ret.timer{3}.ch4 = {'B1','C9'};
+	% TIM4
+	ret.timer{4}.ch1 = {'B6','D12'};
+	ret.timer{4}.ch2 = {'B7','D13'};
+	ret.timer{4}.ch3 = {'B8','D14'};
+	ret.timer{4}.ch4 = {'B9','D15'};
+	% TIM5
+	ret.timer{5}.ch1 = {'A0','H10'};
+	ret.timer{5}.ch2 = {'A1','H11'};
+	ret.timer{5}.ch3 = {'A2','H12'};
+	ret.timer{5}.ch4 = {'A3','I0'};
+	% TIM6
+	ret.timer{6}.ch1 = [];
+	ret.timer{6}.ch2 = [];
+	ret.timer{6}.ch3 = [];
+	ret.timer{6}.ch4 = [];
+	% TIM7
+	ret.timer{7}.ch1 = [];
+	ret.timer{7}.ch2 = [];
+	ret.timer{7}.ch3 = [];
+	ret.timer{7}.ch4 = [];	
+	% TIM8
+	ret.timer{8}.ch1 = {'C6','I5'};
+	ret.timer{8}.ch2 = {'C7','I6'};
+	ret.timer{8}.ch3 = {'C8','I7'};
+	ret.timer{8}.ch4 = {'C9','I2'};
+	% TIM9
+	ret.timer{9}.ch1 = {'A2','E5'};
+	ret.timer{9}.ch2 = {'A3','E6'};
+	ret.timer{9}.ch3 = {};
+	ret.timer{9}.ch4 = {};
+	% TIM10
+	ret.timer{10}.ch1 = {'B8'};
+	ret.timer{10}.ch2 = {};
+	ret.timer{10}.ch3 = {};
+	ret.timer{10}.ch4 = {};
+	% TIM11
+	ret.timer{11}.ch1 = {'B9','F7'};
+	ret.timer{11}.ch2 = {};
+	ret.timer{11}.ch3 = {};
+	ret.timer{11}.ch4 = {};
+	% TIM12
+	ret.timer{12}.ch1 = {'B14','H6'};
+	ret.timer{12}.ch2 = {'B15','H9'};
+	ret.timer{12}.ch3 = {};
+	ret.timer{12}.ch4 = {};
+	% TIM13
+	ret.timer{13}.ch1 = {'A6','F8'};
+	ret.timer{13}.ch2 = {};
+	ret.timer{13}.ch3 = {};
+	ret.timer{13}.ch4 = {};
+	% TIM14
+	ret.timer{14}.ch1 = {'A7','F9'};
+	ret.timer{14}.ch2 = {};
+	ret.timer{14}.ch3 = {};
+	ret.timer{14}.ch4 = {};
+	
+	% Family
+	switch mcu
+		% =====================================================================
+		% === STM32F40_41xxx ===
+		% =====================================================================
+		case {'STM32F405', 'STM32F407', 'STM32F415', 'STM32F417'}
+			ret.family = 'STM32F40_41xxx';
+			ret.ramsize = 128;
+			
+			% =====================================================================
+			% === STM32F427_437xx ===
+			% =====================================================================
+			% =====================================================================
+			% === STM32F429_439xx ===
+			% =====================================================================
+		case {'STM32F429', 'STM32F439','STM32F427', 'STM32F437'}
+			if ~isempty(find(strcmp({'STM32F429', 'STM32F439'}, mcu),1))
+				ret.family = 'STM32F429_439xx';
+			else
+				ret.family = 'STM32F427_437xx';
+			end
+			
+			ret.ramsize = 192;
+			
+			% =====================================================================
+			% STM32F401xx
+			% =====================================================================
+		case 'STM32F401'
+			ret.family = 'STM32F401xx';
+			if ret.flashsize < 384
+				ret.ramsize = 64;
+			else
+				ret.ramsize = 96;
+			end
+			
+			% =====================================================================
+			% STM32F410xx
+			% =====================================================================
+		case 'STM32F410'
+			ret.family = 'STM32F410xx';
+			ret.ramsize = 32;
+			
+			% =====================================================================
+			% STM32F411xx
+			% =====================================================================
+		case 'STM32F411'
+			ret.family = 'STM32F411xx';
+			ret.ramsize = 128;
+			
+			% =====================================================================
+			% STM32F412xx
+			% =====================================================================
+		case 'STM32F412'
+			ret.family = 'STM32F412xx';
+			ret.ramsize = 256;
+			% =====================================================================
+			% STM32F446xx
+			% =====================================================================
+		case 'STM32F446'
+			ret.family = 'STM32F446xx';
+			ret.ramsize = 128;
+			
+			% =====================================================================
+			% STM32F469_479xx
+			% =====================================================================
+		case {'STM32F469', 'STM32F479'}
+			ret.family = 'STM32F469_479xx';
+			ret.ramsize = 384;
+			
+			% Invalid
+		otherwise
+			error ('Invalid or unsupported device name.');
+	end
+	
+	%%
+	% Code generation
+	%%
+	try
+
+		
+		% === MCU ===
+		fprintf(fid,'\t\t\t<mcu id="%s" name="%s" family="%s">\n',ret.mcuid ,ret.mcuname, ret.family);
+		
+		% === IO ===
+		fprintf(fid,'\t\t\t\t<function type="io">\n'); % <function type="io">
+		gpio_port_str = {'A','B','C','D','E','F','G','H','I','J','K'};
+		for port = 1:size(gpio_port_str,2)
+			available = false;
+			% Check port available
+			for pin = 1:16
+				pin_str = [char(gpio_port_str{port}) num2str(pin-1)];
+				if isempty(find(strcmp(ret.io,pin_str), 1))
+				else
+					available = true;
+					break;
+				end
+			end
+			if available
+				fprintf(fid,'\t\t\t\t\t<module Port="%s">\n',char(gpio_port_str{port})); % <module Port="A">
+				for pin = 1:16
+					pin_str = [char(gpio_port_str{port}) num2str(pin-1)];
+					if isempty(find(strcmp(ret.io,pin_str), 1))
+					else
+						fprintf(fid,'\t\t\t\t\t\t<Pin>%d<value>Y</value></Pin>\n',pin-1); % <Pin>0<value>Y</value></Pin>
+					end
+				end
+				fprintf(fid,'\t\t\t\t\t</module>\n'); % </module>
+			end
+		end
+		fprintf(fid,'\t\t\t\t</function>\n');% </function>
+		
+		% === ADC ===
+		% <function type="adc">
+		fprintf(fid,'\t\t\t\t<function type="adc">\n');
+		for adc_module=1:3
+% 			if adc_module == 1
+% 				adc_pin_list = ret.adc1;
+% 			else
+% 				if adc_module == 2
+% 					adc_pin_list = ret.adc2;
+% 				else
+% 					adc_pin_list = ret.adc3;
+% 				end
+% 			end
+			adc_pin_list = ret.adc{adc_module};
+			% <module ADCModule="1">
+			fprintf(fid,'\t\t\t\t\t<module ADCModule="%d">\n',adc_module);
+			for adc_pin_idx = 1:size(adc_pin_list,2)
+				% <AN>0<value>A0</value></AN>
+				if isempty(find(strcmp(ret.io,char(adc_pin_list{adc_pin_idx})), 1))
+				else
+					fprintf(fid,'\t\t\t\t\t\t<AN>%d<value>%s</value></AN>\n',adc_pin_idx-1, adc_pin_list{adc_pin_idx});
+				end
+			end
+			% </module>
+			fprintf(fid,'\t\t\t\t\t</module>\n');
+		end
+		% </function>
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === CAN ===
+		% <function type="can">
+		%   <module CANModule="Tx1">
+		%     <CH>1<value>A12</value></CH>
+		%   </module>
+		%   <module CANModule="Rx1">
+		%   </module>
+		%   <module CANModule="Tx2">
+		%   </module>
+		%   <module CANModule="Rx2">
+		%   </module>
+		% </function>
+		fprintf(fid,'\t\t\t\t<function type="can">\n');
+		fprintf(fid,'\t\t\t\t\t<module CANModule="Tx1">\n');
+		ch = 1;
+		for idx=1:size(ret.can{1}.tx,2)
+			pin_str = char(ret.can{1}.tx{idx});
+			if ~isempty(find(strcmp(ret.io,pin_str), 1))
+				fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch, pin_str);
+				ch = ch + 1;
+			end
+		end
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module CANModule="Rx1">\n');
+		ch = 1;
+		for idx=1:size(ret.can{1}.rx,2)
+			pin_str = char(ret.can{1}.rx{idx});
+			if ~isempty(find(strcmp(ret.io,pin_str), 1))
+				fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch, pin_str);
+				ch = ch + 1;
+			end
+		end
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module CANModule="Tx2">\n');
+		ch = 1;
+		for idx=1:size(ret.can{2}.tx,2)
+			pin_str = char(ret.can{2}.tx{idx});
+			if ~isempty(find(strcmp(ret.io,pin_str), 1))
+				fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch, pin_str);
+				ch = ch + 1;
+			end
+		end
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module CANModule="Rx2">\n');
+		ch = 1;
+		for idx=1:size(ret.can{2}.rx,2)
+			pin_str = char(ret.can{2}.rx{idx});
+			if ~isempty(find(strcmp(ret.io,pin_str), 1))
+				fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch, pin_str);
+				ch = ch + 1;
+			end
+		end
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === DAC ===
+		% <function type="dac">
+		%   <module DACModule="DAC1">
+		%     <Port>A<value>4</value></Port>
+		%   </module>
+		%   <module DACModule="DAC2">
+		%     <Port>A<value>5</value></Port>
+		%   </module>
+		% </function>
+		fprintf(fid,'\t\t\t\t<function type="dac">\n');
+		fprintf(fid,'\t\t\t\t\t<module DACModule="DAC1">\n');
+		dac_pin_list = ret.dac{1};
+		for idx=1:size(dac_pin_list,2)
+			pin_str = char(dac_pin_list{idx});
+			if ~isempty(find(strcmp(ret.io,pin_str), 1))
+				fprintf(fid,'\t\t\t\t\t\t<Port>%s<value>%s</value></Port>\n',char(pin_str(1)), char(pin_str(2:end)));
+			end
+		end
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module DACModule="DAC2">\n');
+		dac_pin_list = ret.dac{2};
+		for idx=1:size(dac_pin_list,2)
+			pin_str = char(dac_pin_list{idx});
+			if ~isempty(find(strcmp(ret.io,pin_str), 1))
+				fprintf(fid,'\t\t\t\t\t\t<Port>%s<value>%s</value></Port>\n',char(pin_str(1)), char(pin_str(2:end)));
+			end
+		end
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === UART ===
+		% <function type="uart">
+		%   <module UARTModule="Tx1">
+		%   </module>
+		% </function>
+		uart_module_str = {...
+			'Tx1','Rx1','CTS1','RTS1','Tx2','Rx2','CTS2','RTS2',...
+			'Tx3','Rx3','CTS3','RTS3','Tx4','Rx4','CTS4','RTS4',...
+			'Tx5','Rx5','CTS5','RTS5','Tx6','Rx6','CTS6','RTS6',...
+			};
+		fprintf(fid,'\t\t\t\t<function type="uart">\n');
+		for uart_module_idx=1:size(uart_module_str,2)
+			% <module UARTModule="Tx1">
+			fprintf(fid,'\t\t\t\t\t<module UARTModule="%s">\n',char(uart_module_str{uart_module_idx}));
+			
+			uart_pin_str = [];
+			switch uart_module_idx
+				case 1; uart_pin_str = ret.uart{1}.tx;
+				case 2; uart_pin_str = ret.uart{1}.rx;
+				case 3; uart_pin_str = ret.uart{1}.cts;
+				case 4; uart_pin_str = ret.uart{1}.rts;
+				case 5; uart_pin_str = ret.uart{2}.tx;
+				case 6; uart_pin_str = ret.uart{2}.rx;
+				case 7;	uart_pin_str = ret.uart{2}.cts;
+				case 8; uart_pin_str = ret.uart{2}.rts;
+				case 9; uart_pin_str = ret.uart{3}.tx;
+				case 10; uart_pin_str = ret.uart{3}.rx;
+				case 11; uart_pin_str = ret.uart{3}.cts;
+				case 12; uart_pin_str = ret.uart{3}.rts;
+				case 13; uart_pin_str = ret.uart{4}.tx;
+				case 14; uart_pin_str = ret.uart{4}.rx;
+				case 15; uart_pin_str = ret.uart{4}.cts;
+				case 16; uart_pin_str = ret.uart{4}.rts;
+				case 17; uart_pin_str = ret.uart{5}.tx;
+				case 18; uart_pin_str = ret.uart{5}.rx;
+				case 19; uart_pin_str = ret.uart{5}.cts;
+				case 20; uart_pin_str = ret.uart{5}.rts;
+				case 21; uart_pin_str = ret.uart{6}.tx;
+				case 22; uart_pin_str = ret.uart{6}.rx;
+				case 23; uart_pin_str = ret.uart{6}.cts;
+				case 24; uart_pin_str = ret.uart{6}.rts;
+				otherwise
+			end
+			
+			ch = 1;
+			%<CH>1<value>Not used</value></CH>
+			fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch,'Not used');
+			ch = ch + 1;
+			for idx = 1:size(uart_pin_str,2)
+				pin_str = char(uart_pin_str{idx});
+				if ~isempty(find(strcmp(ret.io,pin_str), 1))
+					fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch, char(uart_pin_str{idx}));
+					ch = ch + 1;
+				end
+			end
+			% </module>
+			fprintf(fid,'\t\t\t\t\t</module>\n');
+		end
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === I2C ===
+		% 	<function type="i2c">
+		% 	<module I2CModule="SCL1">
+		% 	<CH>1<value>-</value></CH>
+		% 	<CH>2<value>B6</value></CH>
+		% 	<CH>3<value>B8</value></CH>
+		% 	</module>
+		% 	</function>
+		i2c_module_str = {'SCL1','SDA1','SCL2','SDA2','SCL3','SDA3'};
+		fprintf(fid,'\t\t\t\t<function type="i2c">\n');
+		for i2c_module_idx=1:size(i2c_module_str,2)
+			% <module I2CModule="SCL1">
+			fprintf(fid,'\t\t\t\t\t<module I2CModule="%s">\n',char(i2c_module_str{i2c_module_idx}));
+			
+			i2c_pin_str = [];
+			switch i2c_module_idx
+				case 1; i2c_pin_str = ret.i2c{1}.scl;
+				case 2; i2c_pin_str = ret.i2c{1}.sda;
+				case 3; i2c_pin_str = ret.i2c{2}.scl;
+				case 4; i2c_pin_str = ret.i2c{2}.sda;
+				case 5; i2c_pin_str = ret.i2c{3}.scl;
+				case 6; i2c_pin_str = ret.i2c{3}.sda;
+				otherwise
+			end
+			
+			ch = 1;
+			%<CH>1<value>-</value></CH>
+			fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch,'Not used');
+			ch = ch + 1;
+			for idx = 1:size(i2c_pin_str,2)
+				pin_str = char(i2c_pin_str{idx});
+				if ~isempty(find(strcmp(ret.io,pin_str), 1))
+					fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch, char(i2c_pin_str{idx}));
+					ch = ch + 1;
+				end
+			end
+			% </module>
+			fprintf(fid,'\t\t\t\t\t</module>\n');
+		end
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === SPI ===
+		%         <function type="spi">
+		%           <module SPIModule="NSS1">
+		%             <CH>1<value>Not used</value></CH>
+		%             <CH>2<value>A4</value></CH>
+		%             <CH>3<value>A15</value></CH>
+		%           </module>
+		% 	    </function>
+		spi_module_str = {...
+			'NSS1','SCK1','MISO1','MOSI1','NSS2','SCK2','MISO2','MOSI2',...
+			'NSS3','SCK3','MISO3','MOSI3'...
+			};
+		fprintf(fid,'\t\t\t\t<function type="spi">\n');
+		for spi_module_idx=1:size(spi_module_str,2)
+			% <module UARTModule="Tx1">
+			fprintf(fid,'\t\t\t\t\t<module UARTModule="%s">\n',char(spi_module_str{spi_module_idx}));
+			
+			spi_pin_str = [];
+			switch spi_module_idx
+				case 1; spi_pin_str = ret.spi{1}.nss;
+				case 2; spi_pin_str = ret.spi{1}.sck;
+				case 3; spi_pin_str = ret.spi{1}.miso;
+				case 4; spi_pin_str = ret.spi{1}.mosi;
+				case 5; spi_pin_str = ret.spi{2}.nss;
+				case 6; spi_pin_str = ret.spi{2}.sck;
+				case 7; spi_pin_str = ret.spi{2}.miso;
+				case 8; spi_pin_str = ret.spi{2}.mosi;
+				case 9; spi_pin_str = ret.spi{3}.nss;
+				case 10; spi_pin_str = ret.spi{3}.sck;
+				case 11; spi_pin_str = ret.spi{3}.miso;
+				case 12; spi_pin_str = ret.spi{3}.mosi;
+				otherwise
+			end
+			
+			ch = 1;
+			%<CH>1<value>Not used</value></CH>
+			fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch,'Not used');
+			ch = ch + 1;
+			for idx = 1:size(spi_pin_str,2)
+				pin_str = char(spi_pin_str{idx});
+				if ~isempty(find(strcmp(ret.io,pin_str), 1))
+					fprintf(fid,'\t\t\t\t\t\t<CH>%d<value>%s</value></CH>\n',ch, char(spi_pin_str{idx}));
+					ch = ch + 1;
+				end
+			end
+			% </module>
+			fprintf(fid,'\t\t\t\t\t</module>\n');
+		end
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === GNU ARM ===
+		fprintf(fid,'\t\t\t\t<function type="flashram_origin_length_for_gnuarmlinkerscript">\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="FLASH_ORIGIN">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x8000000</value></VALUES>\n');
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="FLASH_LENGTH">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>%dk</value></VALUES>\n',ret.flashsize);
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="RAM_ORIGIN">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x20000000</value></VALUES>\n');
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="RAM_LENGTH">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>%dk</value></VALUES>\n',ret.ramsize);
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === MDK ARM ===
+		fprintf(fid,'\t\t\t\t<function type="flashram_origin_length_for_mdkarmlinkerscript">\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="FLASH_ORIGIN">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x08000000</value></VALUES>\n');
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="FLASH_LENGTH">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x%s</value></VALUES>\n', dec2hex(ret.flashsize*1024));
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="RAM_ORIGIN">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x20000000</value></VALUES>\n');
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="RAM_LENGTH">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x%s</value></VALUES>\n',dec2hex(ret.ramsize*1024));
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === EWARM ===
+		fprintf(fid,'\t\t\t\t<function type="flashram_origin_length_for_ewarmlinkerscript">\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="FLASH_ORIGIN">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x08000000</value></VALUES>\n');
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="FLASH_LENGTH">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x%s</value></VALUES>\n', dec2hex(ret.flashsize*1024));
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="RAM_ORIGIN">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x20000000</value></VALUES>\n');
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t\t<module SECTION="RAM_LENGTH">\n');
+		fprintf(fid,'\t\t\t\t\t\t<VALUES>NA<value>0x%s</value></VALUES>\n',dec2hex(ret.ramsize*1024));
+		fprintf(fid,'\t\t\t\t\t</module>\n');
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% === TIM ===
+		fprintf(fid,'\t\t\t\t<function type="basicpwm">\n');
+		tim_module_str = {'1','2','3','4','5','8','9','10','11','12','13','14'};
+		for tim_module_idx=1:size(tim_module_str,2)
+			fprintf(fid,'\t\t\t\t\t<module TIMER="%s">\n',tim_module_str{tim_module_idx});
+			
+			tim_ch1 = [];
+			tim_ch2 = [];
+			tim_ch3 = [];
+			tim_ch4 = [];
+			switch tim_module_str{tim_module_idx}
+				case '1'
+					tim_ch1 = ret.timer{1}.ch1; tim_ch2 = ret.timer{1}.ch2; tim_ch3 = ret.timer{1}.ch3; tim_ch4 = ret.timer{1}.ch4;
+				case '2'
+					tim_ch1 = ret.timer{2}.ch1; tim_ch2 = ret.timer{2}.ch2; tim_ch3 = ret.timer{2}.ch3; tim_ch4 = ret.timer{2}.ch4;
+				case '3'
+					tim_ch1 = ret.timer{3}.ch1; tim_ch2 = ret.timer{3}.ch2; tim_ch3 = ret.timer{3}.ch3; tim_ch4 = ret.timer{3}.ch4;
+				case '4'
+					tim_ch1 = ret.timer{4}.ch1; tim_ch2 = ret.timer{4}.ch2; tim_ch3 = ret.timer{4}.ch3; tim_ch4 = ret.timer{4}.ch4;
+				case '5'
+					tim_ch1 = ret.timer{5}.ch1; tim_ch2 = ret.timer{5}.ch2; tim_ch3 = ret.timer{5}.ch3; tim_ch4 = ret.timer{5}.ch4;
+				case '8'
+					tim_ch1 = ret.timer{8}.ch1; tim_ch2 = ret.timer{8}.ch2; tim_ch3 = ret.timer{8}.ch3; tim_ch4 = ret.timer{8}.ch4;
+				case '9'
+					tim_ch1 = ret.timer{9}.ch1; tim_ch2 = ret.timer{9}.ch2; tim_ch3 = ret.timer{9}.ch3; tim_ch4 = ret.timer{9}.ch4;
+				case '10'
+					tim_ch1 = ret.timer{10}.ch1; tim_ch2 = ret.timer{10}.ch2; tim_ch3 = ret.timer{10}.ch3; tim_ch4 = ret.timer{10}.ch4;
+				case '11'
+					tim_ch1 = ret.timer{11}.ch1; tim_ch2 = ret.timer{11}.ch2; tim_ch3 = ret.timer{11}.ch3; tim_ch4 = ret.timer{11}.ch4;
+				case '12'
+					tim_ch1 = ret.timer{12}.ch1; tim_ch2 = ret.timer{12}.ch2; tim_ch3 = ret.timer{12}.ch3; tim_ch4 = ret.timer{12}.ch4;
+				case '13'
+					tim_ch1 = ret.timer{13}.ch1; tim_ch2 = ret.timer{13}.ch2; tim_ch3 = ret.timer{13}.ch3; tim_ch4 = ret.timer{13}.ch4;
+				case '14'
+					tim_ch1 = ret.timer{14}.ch1; tim_ch2 = ret.timer{14}.ch2; tim_ch3 = ret.timer{14}.ch3; tim_ch4 = ret.timer{14}.ch4;
+				otherwise
+			end
+			
+			% CH1
+			for idx=1:size(tim_ch1,2)
+				pin_str = char(tim_ch1{idx});
+				if ~isempty(find(strcmp(ret.io,pin_str), 1))
+					fprintf(fid,'\t\t\t\t\t\t<CH>1<value>%s</value></CH>\n',char(tim_ch1{idx}));
+				end
+			end
+			% CH2
+			for idx=1:size(tim_ch2,2)
+				pin_str = char(tim_ch2{idx});
+				if ~isempty(find(strcmp(ret.io,pin_str), 1))
+					fprintf(fid,'\t\t\t\t\t\t<CH>2<value>%s</value></CH>\n',char(tim_ch2{idx}));
+				end
+			end
+			% CH3
+			for idx=1:size(tim_ch3,2)
+				pin_str = char(tim_ch3{idx});
+				if ~isempty(find(strcmp(ret.io,pin_str), 1))
+					fprintf(fid,'\t\t\t\t\t\t<CH>3<value>%s</value></CH>\n',char(tim_ch3{idx}));
+				end
+			end
+			% CH4
+			for idx=1:size(tim_ch4,2)
+				pin_str = char(tim_ch4{idx});
+				if ~isempty(find(strcmp(ret.io,pin_str), 1))
+					fprintf(fid,'\t\t\t\t\t\t<CH>4<value>%s</value></CH>\n',char(tim_ch4{idx}));
+				end
+			end
+			
+			fprintf(fid,'\t\t\t\t\t</module>\n');
+		end
+		fprintf(fid,'\t\t\t\t</function>\n');
+		
+		% ...
+		fprintf(fid,'\t\t\t</mcu>\n');
+		
+		
+		% Store MCU struct
+		eval(['mcu_list.' pn '=' 'ret;']);
+		mcu_list.list{end+1} = ret.mcuname;
+		%mcu_list.a{end+1} = ret;
+		
+	catch e
+		disp(e.message);
+		error(e.messages);
+	end
+end
+
+% Head
+fprintf(fid,'\t\t</table>\n');
+fprintf(fid,'\t</tables>\n');
+%%
+fclose(fid);
+
+%%
+%mcu_list.list = DEVICES_LIST;
+
+% Return value
+s = mcu_list;
